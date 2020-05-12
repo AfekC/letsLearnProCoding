@@ -1,26 +1,24 @@
 body {
     background-color: rgb(192, 231, 231);
+    direction: rtl;
 }
 
-.main_container{
+.container{
     display: flex;
     flex-direction: column;
 }
 
-.block{
+.navbar{
     display: flex;
     border: 2px solid rgb(109, 215, 230);
-    padding: 1%;
-    margin-bottom: 0.5%;
-    margin-left: 0.5%;
-    margin-right: 0.5%;
-}
-
-#navbar{
+    padding: 1vh;
+    margin-bottom: 1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
     flex: auto;
     align-items: center;
     justify-content: space-between;
-    border-radius: 25px;
+    border-radius: 2vh;
     background-color:rgb(227, 250, 250);
 }
 
@@ -29,60 +27,82 @@ body {
     width: 42px;
 }
 
-.main_container > .main_block{
+.mainBlock{
     display: flex;
     flex-direction: row;
 }
 
-#main_contant{
+.contant{
+    display: flex;
+    border: 2px solid rgb(109, 215, 230);
+    padding: 4vh;
+    margin-bottom: 1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
     background-color:white;
-    border-radius: 50px;
+    border-radius: 4vh;
     width: 80%;
+    height: 75vh;
     flex-direction: column;
 }
 
-#all_items{
-    margin-left: 10px;
-    margin-right: 10px;
-    padding-right: 10%;
+.allItems{
+    display: flex;
+    border: 2px solid rgb(109, 215, 230);
+    padding: 2vh;
+    margin-bottom: 1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    padding-right: 20vh;
     flex-direction: column;
     height: 90%;
 }
 
-#specific_items{
-    margin-left: 10px;
-    margin-right: 10px;
+.specificItems{
+    display: flex;
+    border: 2px solid rgb(109, 215, 230);
+    padding: 1%;
+    margin-bottom:  1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
     padding-right: 5%;
     flex-direction: column;
 }
 
-#right_navbar{
+.rightNavbar{
+    display: flex;
+    border: 2px solid rgb(109, 215, 230);
+    padding: 1%;
+    margin-bottom: 1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
     background-color:rgb(145, 211, 211);
-    border-radius: 25px;
-    width: 20%;
+    border-radius: 2vh;
+    width: 15%;
     flex-direction: column;
+  justify-content: center;
+    
 }
 
-.item_button_list{
-    margin-top: 20%;
-}
-
-.item_button{
+.itemButton{
     border-radius: 15px;
-    background-color:rgb(72, 190, 190);
-    padding: 10%;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 5px;
+    padding: 3vh;
+    margin-left: 3vh;
+    margin-right: 3vh;
+    margin-top: 1vh;
     text-align: center;
-    color: white; 
+    color: white;
+    background-color: rgb(109, 215, 230);
 }
 
 p{
     font-size: large;
+    font-style: italic;
 }
 a{
     font-size: large;
     padding-top: 0.5%;
     margin-right: 10%;
+    font-style: italic;
+
 }
