@@ -1,0 +1,14 @@
+body{
+    display: flex;
+    padding: 5vh;
+}
+
+.btn{
+    margin-left: 10vh;
+    background-color: lightgray;
+}
+
+.time{
+    width: 40vh;
+    background-color: lightgreen;
+}
