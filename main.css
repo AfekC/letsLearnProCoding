@@ -69,12 +69,13 @@ body {
 
 .item_button{
     border-radius: 15px;
-    background-color:rgb(61, 161, 161);
+    background-color:rgb(72, 190, 190);
     padding: 10%;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
     margin-top: 5px;
-    
+    text-align: center;
+    color: white; 
 }
 
 p{
