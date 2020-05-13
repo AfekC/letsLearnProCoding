@@ -1,14 +1,121 @@
 body{
-    display: flex;
-    padding: 5vh;
+    background-color: rgb(192, 231, 231);
+    direction: rtl;
 }
 
 .btn{
-    margin-left: 10vh;
     background-color: lightgray;
 }
 
 .time{
-    width: 40vh;
     background-color: lightgreen;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar{
+    display: flex;
+    border: 2px solid rgb(109, 215, 230);
+    padding: 1vh;
+    margin-bottom: 1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    flex: auto;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 2vh;
+    background-color:rgb(227, 250, 250);
+}
+
+.images img{
+    height: 42px;
+    width: 42px;
+}
+
+.clock{
+    display: flex;
+    flex-direction: row;
+}
+
+.mainBlock{
+    display: flex;
+    flex-direction: row;
+}
+
+.contant{
+    display: flex;
+    border: 2px solid rgb(109, 215, 230);
+    padding: 4vh;
+    margin-bottom: 1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    background-color:white;
+    border-radius: 4vh;
+    width: 80%;
+    height: 75vh;
+    flex-direction: column;
+}
+
+.allItems{
+    display: flex;
+    border: 2px solid rgb(109, 215, 230);
+    padding: 2vh;
+    margin-bottom: 1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    padding-right: 20vh;
+    flex-direction: column;
+    height: 90%;
+}
+
+.specificItems{
+    display: flex;
+    border: 2px solid rgb(109, 215, 230);
+    padding: 1%;
+    margin-bottom:  1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    padding-right: 5%;
+    flex-direction: column;
+}
+
+.rightNavbar{
+    display: flex;
+    border: 2px solid rgb(109, 215, 230);
+    padding: 1%;
+    margin-bottom: 1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    background-color:rgb(145, 211, 211);
+    border-radius: 2vh;
+    width: 15%;
+    flex-direction: column;
+  justify-content: center;
+    
+}
+
+.itemButton{
+    border-radius: 15px;
+    padding: 3vh;
+    margin-left: 3vh;
+    margin-right: 3vh;
+    margin-top: 1vh;
+    text-align: center;
+    color: white;
+    background-color: rgb(109, 215, 230);
+}
+
+p{
+    font-size: large;
+    font-style: italic;
+}
+a{
+    font-size: large;
+    padding-top: 0.5%;
+    margin-right: 10%;
+    font-style: italic;
+
 }
