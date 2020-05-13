@@ -1,0 +1,149 @@
+body{
+    background-color: rgb(192, 231, 231);
+    direction: rtl;
+    font-size: large;
+    font-style: italic;
+}
+
+.btn{
+    border-radius: 5px;
+    margin: 1vh;
+    background-color: rgb(109, 215, 230);
+}
+
+.time{
+    background-color: rgb(144, 238, 233);
+    padding: 1vh;
+    border: 1px solid rgb(54, 137, 148);
+    border-radius: 5px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar{
+    display: flex;
+    border: 2px solid rgb(109, 215, 230);
+    padding: 1vh;
+    margin-bottom: 1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    flex: auto;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 2vh;
+    background-color:rgb(227, 250, 250);
+}
+
+.images img{
+    height: 42px;
+    width: 42px;
+}
+
+.clock{
+    display: flex;
+    flex-direction: row;
+}
+
+.mainBlock{
+    display: flex;
+    flex-direction: row;
+}
+
+.contant{
+    display: flex;
+    border: 2px solid rgb(109, 215, 230);
+    padding: 4vh;
+    margin-bottom: 1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    background-color:white;
+    border-radius: 4vh;
+    width: 80%;
+    height: 75vh;
+    flex-direction: column;
+}
+
+.allItems{
+    display: flex;
+    border: 2px solid rgb(109, 215, 230);
+    padding: 2vh;
+    margin-bottom: 1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    padding-right: 20vh;
+    padding-left: 20vh;
+    flex-direction: column;
+    height: 90%;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+td, th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+  }
+
+tbody tr:hover {
+    background-color: rgb(214, 248, 248);
+  }
+
+.newAnimal{
+    background-color: rgb(214, 248, 248);
+    width: 50%;
+}
+
+.specificItems{
+    display: flex;
+    border: 2px solid rgb(109, 215, 230);
+    margin-bottom:  1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    padding-right: 5%;
+    flex-direction: column;
+}
+
+.animalExtraData{
+    background-color: rgb(214, 248, 248);
+    margin-left: 25%;
+}
+
+
+.rightNavbar{
+    display: flex;
+    border: 2px solid rgb(109, 215, 230);
+    padding: 1%;
+    margin-bottom: 1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    background-color:rgb(145, 211, 211);
+    border-radius: 2vh;
+    width: 15%;
+    flex-direction: column;
+  justify-content: center;
+    
+}
+
+.itemButton{
+    border-radius: 15px;
+    padding: 2vh;
+    margin-left: 3vh;
+    margin-right: 3vh;
+    margin-top: 1vh;
+    text-align: center;
+    color: white;
+    background-color: rgb(109, 215, 230);
+    font-size: x-large;
+    font-style: italic;
+}
+
+
+a{
+    font-size: large;
+    padding-top: 0.5%;
+}
