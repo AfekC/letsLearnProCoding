@@ -32,7 +32,7 @@ allAnimals = () => {
                 <th>שם מלא</th>
             </tr>
         </thead>
-        <tbody>`
+        <tbody>`;
     for(animal of animalsJSON){
         table += 
                `
@@ -40,15 +40,13 @@ allAnimals = () => {
                 <td>${animal.id}</td>
                 <td>${animal.fullName}</td>
                 <td><i class="fa fa-trash" onClick="trashClicked(${animal.id})"></i></td>
-            </tr>
-            `;
+            </tr>`;
     }
     table +=`
         </tbody>
     </table>
-    <button class="save" style="visibility: hidden;" onclick="saveClicked()">שמור</button>
-    `
-    animals.innerHTML = table
+    <button class="save" style="visibility: hidden;" onclick="saveClicked()">שמור</button>`;
+    animals.innerHTML = table;
 }
 
 saveClicked = () => {
@@ -81,30 +79,28 @@ newAnimal = () => {
         </td></tr>
         <tr><td>מספר רגליים<input type="number" id="legs"></input></td></tr>
     <table>
-    <button onclick="addNewAnimal()">הוסף</button>
-    `;
+    <button onclick="addNewAnimal()">הוסף</button>`;
 }
 
 cagesAsOptionsHTML = () =>{
-    let options
+    let options;
     for (cage of cages){
-        options += `<option value="${cage}">${cage}</option>`
+        options += `<option value="${cage}">${cage}</option>`;
     }
     return options;
 }
 
 addNewAnimal = () => {
-    let id = parseInt(document.getElementById("id").value)
-    let name = document.getElementById("name").value
-    let cage = document.getElementById("cage").value
-    let legs = document.getElementById("legs").value
-    debugger
+    let id = parseInt(document.getElementById("id").value);
+    let name = document.getElementById("name").value;
+    let cage = document.getElementById("cage").value;
+    let legs = document.getElementById("legs").value;
     if(animalsJSON.find(animal => animal.id === id) === undefined)
-        animalsJSON.push({"id":id, "fullName": name, "cage": cage, "legs": legs, "toDelete": false})
+        animalsJSON.push({"id":id, "fullName": name, "cage": cage, "legs": legs, "toDelete": false});
 }
 
 trashClicked = (id) => {
-    let animal = animalsJSON.find(animal => animal.id === id)
+    let animal = animalsJSON.find(animal => animal.id === id);
     if(!animal.toDelete){
         document.getElementById(id).style = "text-decoration: line-through";
     } else{
@@ -137,7 +133,7 @@ clicked = () => {
 }
 
 getTime = () => {
-    time = new Date()
+    time = new Date();
     return padding(time.getHours()) + ":" + padding(time.getMinutes()) + ":" + padding(time.getSeconds());
 }
 
