@@ -1,35 +1,37 @@
 let cages = ["box", "prison type", "in the open air"]
 
 
-let animalsJSON = [{"id":1, "fullName": "חזי מנישמע", "cage": cages[2], "legs": 4, "toDelete": false},
-               {"id":2, "fullName": "מיצי מיאוו", "cage": cages[1], "legs": 4, "toDelete": false},
-               {"id":3, "fullName": "אבי ביטון", "cage": cages[0], "legs": 2, "toDelete": false}];
+let animalsJSON = [{"id":"1", "fullName": "חזי מנישמע", "cage": cages[2], "legs": 4, "toDelete": false},
+               {"id":"2", "fullName": "מיצי מיאוו", "cage": cages[1], "legs": 4, "toDelete": false},
+               {"id":"3", "fullName": "אבי ביטון", "cage": cages[0], "legs": 2, "toDelete": false}];
+
+let runner;
 
 
 window.onload = () => {
-    time = new Date();
-    this.document.getElementsByClassName("time")[0].innerHTML = getTime();
+    $(".time").html(getTime());
 };
 
 menuButton = (indx) => {
-    for(button of document.getElementsByClassName("itemButton")){
+    for(button of $(".itemButton")){
         button.style = "background-color: rgb(109, 215, 230);";
     }
-    document.getElementsByClassName("itemButton")[indx].style = "background-color: rgb(32, 154, 170);";
+    $(".itemButton")[indx].style = "background-color: rgb(32, 154, 170);";
 }
 
 allAnimals = () => {
     menuButton(0);
 
     animalsJSON.forEach(animal => animal.toDelete = false);
-    document.getElementsByClassName("specificData")[0].innerHTML = '';
-    animals = document.getElementsByClassName("optionData")[0];
+    $(".specificData").html('');
+    let animals = $(".optionData");
     let table = `
     <table>
         <thead>
             <tr>
                 <th>מספר מזהה</th>
                 <th>שם מלא</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>`;
@@ -46,7 +48,7 @@ allAnimals = () => {
         </tbody>
     </table>
     <button class="save" style="visibility: hidden;" onclick="saveClicked()">שמור</button>`;
-    animals.innerHTML = table;
+    animals.html(table);
 }
 
 saveClicked = () => {
@@ -58,17 +60,19 @@ saveClicked = () => {
 }
 
 showAnimalDetails = (id) =>{
-    let animal = animalsJSON.find(animal => animal.id === id);
-    document.getElementsByClassName("specificData")[0].innerHTML = `
+    $("tr").css("background-color", "")
+    $("#" + id).css("background-color", "rgb(109, 215, 230)")
+    let animal = animalsJSON.find(animal => animal.id === id.toString());
+    $(".specificData").html( `
     <h4>נבחרה חיה מספר ${id}</h4>
-    <p class="animalExtraData">שם החיה: ${animal.fullName},  נמצאת בכלוב: ${animal.cage},  מספר רגליים ${animal.legs}</p>`;
+    <p class="animalExtraData">שם החיה: ${animal.fullName},  נמצאת בכלוב: ${animal.cage},  מספר רגליים ${animal.legs}</p>`);
 }
 
 newAnimal = () => {
     menuButton(1);
 
-    document.getElementsByClassName("specificData")[0].innerHTML = '';
-    this.document.getElementsByClassName("optionData")[0].innerHTML = `
+    $(".specificData").html('');
+    $(".optionData").html(`
     <table class="newAnimal">
         <tr><td>מספר חיה: <input type="number" id="id"></input></td></tr>
         <tr><td>שם החיה: <input type="text" id="name"></input></td></tr>
@@ -79,7 +83,7 @@ newAnimal = () => {
         </td></tr>
         <tr><td>מספר רגליים<input type="number" id="legs"></input></td></tr>
     <table>
-    <button onclick="addNewAnimal()">הוסף</button>`;
+    <button onclick="addNewAnimal()">הוסף</button>`);
 }
 
 cagesAsOptionsHTML = () =>{
@@ -91,43 +95,49 @@ cagesAsOptionsHTML = () =>{
 }
 
 addNewAnimal = () => {
-    let id = parseInt(document.getElementById("id").value);
-    let name = document.getElementById("name").value;
-    let cage = document.getElementById("cage").value;
-    let legs = document.getElementById("legs").value;
-    if(animalsJSON.find(animal => animal.id === id) === undefined)
+    let id = $("#id").val();
+    let name = $("#name").val();
+    let cage = $("#cage").val();
+    let legs = $("#legs").val();
+    //if(parseInt(id) > 0 && name.length > 0 && cage.length > 0 && legs >= 0
+    //    && animalsJSON.find(animal => animal.id === id) === undefined){
         animalsJSON.push({"id":id, "fullName": name, "cage": cage, "legs": legs, "toDelete": false});
+   //     alert('החיה הוספה בהצלחה');
+   // } else{
+   //     alert('שגיאה בפרטי החיה החדשה');
+   // }
+
 }
 
 trashClicked = (id) => {
-    let animal = animalsJSON.find(animal => animal.id === id);
+    let animal = animalsJSON.find(animal => animal.id === id.toString());
     if(!animal.toDelete){
-        document.getElementById(id).style = "text-decoration: line-through";
+        $("#" + id).addClass("strikeout");
     } else{
-        document.getElementById(id).style = "";
+        $("#" + id).removeClass("strikeout");
     }
     animal.toDelete = !animal.toDelete;
 
     if (animalsJSON.find(animal => animal.toDelete === true) != undefined){
-        document.getElementsByClassName("save")[0].style.visibility="visible";
+        $(".save").css("visibility","visible");
     } else {
-        document.getElementsByClassName("save")[0].style.visibility="hidden";
+        $(".save").css("visibility","hidden");
     }
 } 
 
-let runner;
+
 
 clicked = () => {
-    let button = this.document.getElementsByClassName("btn")[0];
+    let button = $(".btn")[0];
 
-    if(button.innerHTML === "הפעל"){
-        this.document.getElementsByClassName("time")[0].innerHTML = getTime();
+    if(button.html === "הפעל"){
+        $(".time").html(getTime());
         runner = setInterval(function(){
-            this.document.getElementsByClassName("time")[0].innerHTML = getTime();
+            $(".time").html(getTime());
           }, 1000);
-        button.innerHTML = "עצור";
+        button.html("עצור");
     } else {
-        button.innerHTML = "הפעל";
+        button.html("הפעל");
         clearInterval(runner);
     }
 }
