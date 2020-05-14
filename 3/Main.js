@@ -13,10 +13,8 @@ window.onload = () => {
 };
 
 menuButton = (indx) => {
-    for(button of $(".itemButton")){
-        button.style = "background-color: rgb(109, 215, 230);";
-    }
-    $(".itemButton")[indx].style = "background-color: rgb(32, 154, 170);";
+    $(".selectedItemButton").addClass("itemButton").removeClass("selectedItemButton");
+    $("#option_" + (indx + 1)).addClass("selectedItemButton").removeClass("itemButton");
 }
 
 allAnimals = () => {
@@ -24,7 +22,7 @@ allAnimals = () => {
 
     animalsJSON.forEach(animal => animal.toDelete = false);
     $(".specificData").html('');
-    let animals = $(".optionData");
+    let animals = $(".allDetails");
     let table = `
     <table>
         <thead>
@@ -53,7 +51,7 @@ allAnimals = () => {
 
 saveClicked = () => {
     animalsJSON = animalsJSON.filter(function( animal ) {
-        return animal.toDelete !== true;
+        return !animal.toDelete;
     });
 
     allAnimals();
@@ -72,9 +70,9 @@ newAnimal = () => {
     menuButton(1);
 
     $(".specificData").html('');
-    $(".optionData").html(`
+    $(".allDetails").html(`
     <table class="newAnimal">
-        <tr><td>מספר חיה: <input type="number" id="id"></input></td></tr>
+        <tr><td>מספר חיה: <input type="number" id="id" min="1"></input></td></tr>
         <tr><td>שם החיה: <input type="text" id="name"></input></td></tr>
         <tr><td>נמצאת בכלוב: 
         <select id="cage">
@@ -99,14 +97,13 @@ addNewAnimal = () => {
     let name = $("#name").val();
     let cage = $("#cage").val();
     let legs = $("#legs").val();
-    if(parseInt(id) > 0 && name.length > 0 && cage.length > 0 && legs >= 0
+    if(name.length > 0 && cage.length > 0 && legs >= 0
         && animalsJSON.find(animal => animal.id === id) === undefined){
         animalsJSON.push({"id":id, "fullName": name, "cage": cage, "legs": legs, "toDelete": false});
         alert('החיה הוספה בהצלחה');
     } else{
         alert('שגיאה בפרטי החיה החדשה');
     }
-
 }
 
 trashClicked = (id) => {

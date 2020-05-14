@@ -152,6 +152,19 @@ tbody tr:hover {
     font-style: italic;
 }
 
+.selectedItemButton{
+    border-radius: 15px;
+    padding: 2vh;
+    margin-left: 3vh;
+    margin-right: 3vh;
+    margin-top: 1vh;
+    text-align: center;
+    color: white;
+    background-color: rgb(32, 154, 170);
+    font-size: x-large;
+    font-style: italic;
+}
+
 
 a{
     font-size: large;
