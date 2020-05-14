@@ -99,13 +99,13 @@ addNewAnimal = () => {
     let name = $("#name").val();
     let cage = $("#cage").val();
     let legs = $("#legs").val();
-    //if(parseInt(id) > 0 && name.length > 0 && cage.length > 0 && legs >= 0
-    //    && animalsJSON.find(animal => animal.id === id) === undefined){
+    if(parseInt(id) > 0 && name.length > 0 && cage.length > 0 && legs >= 0
+        && animalsJSON.find(animal => animal.id === id) === undefined){
         animalsJSON.push({"id":id, "fullName": name, "cage": cage, "legs": legs, "toDelete": false});
-   //     alert('החיה הוספה בהצלחה');
-   // } else{
-   //     alert('שגיאה בפרטי החיה החדשה');
-   // }
+        alert('החיה הוספה בהצלחה');
+    } else{
+        alert('שגיאה בפרטי החיה החדשה');
+    }
 
 }
 
