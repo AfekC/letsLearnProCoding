@@ -1,26 +1,35 @@
 <template>
-  <div class="menuButton">
     <v-btn 
         @click="buttonClicked()"
-        :class="{'pressed': clicked == id, 'notPressed': clicked != id}"
-        text width="95%">{{title}}
+        :class="buttonClass"
+        text width="95%">{{button.title}}
     </v-btn>
-  </div>
 </template>
 
 <script>
+
+import EventBus from '@/event-bus';
+
 export default {
   name: 'MenuButton',
   props: {
     clicked: Number,
-    id: String,
-    title: String
+    button:Object
   },
   methods:{
       buttonClicked(){
-          this.clicked = this.id
-          this.$emit('buttonClicked', this.id, this.title)
+          this.clicked = this.button.id
+          EventBus.$emit('MENU_BUTTON_CLICKED', {id: this.button.id, title: this.button.title});
       }
+  },
+  computed:{
+    buttonClass(){
+      if(this.button.id == this.clicked){
+        return 'pressed'
+      } else {
+        return 'notPressed'
+      }
+    }
   }
 }
 </script>

@@ -1,30 +1,31 @@
 <template>
-  <div id="app">
-    <v-container fluid fill-height>
-      <v-row>
-        <v-col cols="2">
-          <Menu @changeTitle="changeTitle"/>
-        </v-col>
-        <v-col cols="10">
-            <MainDetails class="pb-2" :title="title" :halfScreen="isExtraDetails"/>
-            <ExtraDetails v-show="isExtraDetails"/>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+  <v-app>
+    <v-content>
+      <v-container fluid fill-height>
+        <v-row>
+          <v-col cols="2">
+            <Menu/>
+          </v-col>
+          <v-col>
+            <MainDetails :title="title" :isExtraDetails="isExtraDetails"/>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
 import MainDetails from './components/MainDetails.vue'
 import Menu from './components/Menu.vue'
-import ExtraDetails from './components/ExtraDetails.vue'
+import EventBus from './event-bus';
+
 
 export default {
   name: 'App',
   components: {
     MainDetails,
     Menu,
-    ExtraDetails
   },
   data: function () {
     return {
@@ -32,15 +33,16 @@ export default {
       isExtraDetails: true
     }
   },
-  methods:{
-    changeTitle (title) {
-     this.title = title;
+  mounted () {
+    EventBus.$on('MENU_BUTTON_CLICKED', ({title}) => {
+      this.title = title;
      if(title === "דואר זבל"){
        this.isExtraDetails = false;
      } else {
        this.isExtraDetails = true;
      }
-   }
+    });
   },
+  
 }
 </script>
