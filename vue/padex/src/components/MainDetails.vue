@@ -14,6 +14,8 @@ import BasicCard from './BasicCard'
 import MsgIn from './MsgIn'
 import MsgOut from './MsgOut'
 import Trash from './Trash'
+import EventBus from '@/event-bus'
+import MenuOptions from '@/menuOption.js'
 
 export default {
   name: 'MainDetails',
@@ -31,6 +33,11 @@ export default {
   props: {
     title: String,
     isExtraDetails: Boolean
+  },
+  mounted(){
+    EventBus.$on('MENU_BUTTON_CLICKED', ({id}) => {
+      this.component = MenuOptions.filter(option => option.id === id)[0].component
+    })
   },
   computed:{
     mainDetailsHeight(){

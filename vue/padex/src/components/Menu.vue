@@ -1,6 +1,6 @@
 <template>
   <BasicCard style="height: 93vh" title="תפריט">  
-    <MenuButton v-for="(button, index) in buttons" :key="index" :clicked="clicked" :button="button"/>
+    <MenuButton v-for="(button, index) in MenuOptions" :key="index" :clicked="clicked" :button="button"/>
   </BasicCard>
 </template>
 
@@ -9,6 +9,7 @@
 import MenuButton from './MenuButton.vue'
 import BasicCard from './BasicCard.vue'
 import EventBus from '@/event-bus'
+import MenuOptions from '@/menuOption.js'
 
 export default {
   name: 'Menu',
@@ -19,7 +20,7 @@ export default {
   data: function () {
     return {
       clicked: 0,
-      buttons: [{id:"1", title:"דואר נכנס"}, {id:"2", title:"דואר יוצא"}, {id:"3", title:"דואר זבל"}]
+      MenuOptions
     }
   },
   mounted () {

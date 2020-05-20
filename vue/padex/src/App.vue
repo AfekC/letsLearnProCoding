@@ -19,6 +19,7 @@
 import MainDetails from './components/MainDetails.vue'
 import Menu from './components/Menu.vue'
 import EventBus from './event-bus';
+import MenuOptions from './menuOption.js'
 
 
 export default {
@@ -34,13 +35,9 @@ export default {
     }
   },
   mounted () {
-    EventBus.$on('MENU_BUTTON_CLICKED', ({title}) => {
+    EventBus.$on('MENU_BUTTON_CLICKED', ({title, id}) => {
       this.title = title;
-     if(title === "דואר זבל"){
-       this.isExtraDetails = false;
-     } else {
-       this.isExtraDetails = true;
-     }
+      this.isExtraDetails = MenuOptions.filter(option => option.id === id)[0].isExtraDetails
     });
   },
   
