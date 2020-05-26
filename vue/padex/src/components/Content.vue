@@ -19,6 +19,7 @@ import BasicCard from "./BasicCard";
 import MsgIn from "./MsgIn";
 import MsgOut from "./MsgOut";
 import Trash from "./Trash";
+import NewMail from "./NewMail";
 import EventBus from "@/event-bus";
 import MenuOptions from "@/menuOption.js";
 
@@ -34,7 +35,8 @@ export default {
     BasicCard,
     MsgIn,
     MsgOut,
-    Trash
+    Trash,
+    NewMail
   },
   props: {
     title: String,
