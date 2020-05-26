@@ -7,7 +7,7 @@
             <Menu/>
           </v-col>
           <v-col>
-            <MainDetails :title="title" :isExtraDetails="isExtraDetails"/>
+            <Content :title="title" :isExtraDetails="isExtraDetails"/>
           </v-col>
         </v-row>
       </v-container>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import MainDetails from './components/MainDetails.vue'
+import Content from './components/Content.vue'
 import Menu from './components/Menu.vue'
 import EventBus from './event-bus';
 import MenuOptions from './menuOption.js'
@@ -25,7 +25,7 @@ import MenuOptions from './menuOption.js'
 export default {
   name: 'App',
   components: {
-    MainDetails,
+    Content,
     Menu,
   },
   data: function () {

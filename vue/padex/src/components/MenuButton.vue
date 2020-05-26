@@ -1,51 +1,33 @@
 <template>
-    <v-btn 
-        @click="buttonClicked()"
-        :class="buttonClass"
-        text width="95%">{{button.title}}
-    </v-btn>
+  <v-list-item @click="buttonClicked()">
+    <v-list-item-content>
+      <v-list-item-title v-text="button.title"></v-list-item-title>
+    </v-list-item-content>
+        <v-list-item-icon>
+      <v-icon v-text="button.icon"></v-icon>
+    </v-list-item-icon>
+  </v-list-item>
 </template>
 
 <script>
-
-import EventBus from '@/event-bus';
+import EventBus from "@/event-bus";
 
 export default {
-  name: 'MenuButton',
+  name: "MenuButton",
   props: {
-    clicked: Number,
-    button:Object
+    button: Object
   },
-  methods:{
-      buttonClicked(){
-          this.clicked = this.button.id
-          EventBus.$emit('MENU_BUTTON_CLICKED', {id: this.button.id, title: this.button.title});
-      }
-  },
-  computed:{
-    buttonClass(){
-      if(this.button.id == this.clicked){
-        return 'pressed'
-      } else {
-        return 'notPressed'
-      }
+  methods: {
+    buttonClicked() {
+      this.clicked = this.button.id;
+      EventBus.$emit("MENU_BUTTON_CLICKED", {
+        id: this.button.id,
+        title: this.button.title
+      });
     }
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
-v-btn {
-  padding: 0;
-}
-
-.pressed{
-    color: blue !important;
-    background-color:rgb(192,192,192);
-}
-
-.notPressed{
-    color:black !important;
-    background-color:white;
-}
 </style>

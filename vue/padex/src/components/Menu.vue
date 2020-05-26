@@ -1,33 +1,34 @@
 <template>
-  <BasicCard style="height: 93vh" title="תפריט">  
-    <MenuButton v-for="(button, index) in MenuOptions" :key="index" :clicked="clicked" :button="button"/>
+  <BasicCard style="height: 93vh" title="תפריט">
+    <v-list>
+      <v-list-item-group background-color="gray" color="primary">
+      <MenuButton
+        v-for="button in menuOptions"
+        :key="button.id"
+        :button="button"
+      />
+      </v-list-item-group>
+    </v-list>
   </BasicCard>
 </template>
 
 <script>
-
-import MenuButton from './MenuButton.vue'
-import BasicCard from './BasicCard.vue'
-import EventBus from '@/event-bus'
-import MenuOptions from '@/menuOption.js'
+import MenuButton from "./MenuButton.vue";
+import BasicCard from "./BasicCard.vue";
+import EventBus from "@/event-bus";
+import menuOptions from "@/menuOption.js";
 
 export default {
-  name: 'Menu',
+  name: "Menu",
   components: {
     MenuButton,
     BasicCard
   },
-  data: function () {
+  data: function() {
     return {
-      clicked: 0,
-      MenuOptions
-    }
-  },
-  mounted () {
-    EventBus.$on('MENU_BUTTON_CLICKED', ({id}) => {
-      this.clicked=parseInt(id)
-    });
+      menuOptions
+    };
   }
-}
+};
 </script>
 

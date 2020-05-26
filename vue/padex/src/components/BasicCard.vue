@@ -1,6 +1,6 @@
 <template>
   <v-card>  
-    <v-card-text style="background-color: #e91e63; padding:2px; height:4vh;">{{title}}</v-card-text>
+    <v-card-text class="card-top">{{title}}</v-card-text>
     <slot ></slot>
   </v-card>
 </template>
@@ -16,4 +16,10 @@ export default {
 </script>
 
 <style scoped>
+.card-top{
+  background-color: #e91e63;
+  padding:2px;
+  margin-bottom:1vh;
+  height:4vh;
+}
 </style>
