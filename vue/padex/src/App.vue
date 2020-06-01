@@ -4,10 +4,10 @@
       <v-container fluid fill-height>
         <v-row>
           <v-col cols="2">
-            <Menu/>
+            <Menu />
           </v-col>
           <v-col>
-            <Content :title="title" :isExtraDetails="isExtraDetails"/>
+            <Content :isExtraDetails="isExtraDetails" />
           </v-col>
         </v-row>
       </v-container>
@@ -16,30 +16,20 @@
 </template>
 
 <script>
-import Content from './components/Content.vue'
-import Menu from './components/Menu.vue'
-import EventBus from './event-bus';
-import MenuOptions from './menuOption.js'
-
+import Content from "./components/Content.vue";
+import Menu from "./components/Menu.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Content,
-    Menu,
+    Menu
   },
-  data: function () {
+  data: function() {
     return {
       title: "",
       isExtraDetails: true
-    }
-  },
-  mounted () {
-    EventBus.$on('MENU_BUTTON_CLICKED', ({title, id}) => {
-      this.title = title;
-      this.isExtraDetails = MenuOptions.filter(option => option.id === id)[0].isExtraDetails
-    });
-  },
-  
-}
+    };
+  }
+};
 </script>

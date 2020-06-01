@@ -1,16 +1,18 @@
 <template>
-  <v-list-item @click="buttonClicked()">
-    <v-list-item-content>
-      <v-list-item-title v-text="button.title"></v-list-item-title>
-    </v-list-item-content>
-        <v-list-item-icon>
-      <v-icon v-text="button.icon"></v-icon>
-    </v-list-item-icon>
-  </v-list-item>
+  <router-link :to="'/' + button.component">
+    <v-list-item @click="setCurrOption(button)">
+      <v-list-item-content>
+        <v-list-item-title v-text="button.title"></v-list-item-title>
+      </v-list-item-content>
+      <v-list-item-icon>
+        <v-icon v-text="button.icon"></v-icon>
+      </v-list-item-icon>
+    </v-list-item>
+  </router-link>
 </template>
 
 <script>
-import EventBus from "@/event-bus";
+import { mapActions } from "vuex";
 
 export default {
   name: "MenuButton",
@@ -18,16 +20,13 @@ export default {
     button: Object
   },
   methods: {
-    buttonClicked() {
-      this.clicked = this.button.id;
-      EventBus.$emit("MENU_BUTTON_CLICKED", {
-        id: this.button.id,
-        title: this.button.title
-      });
-    }
-  },
+    ...mapActions(["setCurrOption"])
+  }
 };
 </script>
 
 <style scoped>
+a {
+  text-decoration: none;
+}
 </style>

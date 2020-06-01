@@ -1,10 +1,15 @@
 <template>
   <v-form ref="form" class="mailCard">
+    <v-card-actions>
+      <v-checkbox v-model="toMySelf" label="שליחה לעצמי"></v-checkbox>
+    </v-card-actions>
+
     <v-text-field
+      :disabled="toMySelf"
       class="area"
       v-model="name"
-      :rules="nameRules(name)"
-      label="Full Name"
+      :rules="nameRules"
+      label="אל"
       maxlength="20"
       outlined
       required
@@ -15,8 +20,8 @@
     <v-text-field
       class="area"
       v-model="title"
-      :rules="[() => !!title || 'This field is required']"
-      label="Title"
+      :rules="titleRules"
+      label="כותרת"
       maxlength="40"
       outlined
       required
@@ -27,8 +32,8 @@
     <v-textarea
       class="area"
       v-model="content"
-      :rules="[() => !!content || 'This field is required']"
-      label="Message"
+      :rules="massageRules"
+      label="הודעה"
       maxlength="200"
       counter
       outlined
@@ -36,27 +41,44 @@
     ></v-textarea>
 
     <v-card-actions>
-      <v-btn v-if="allLigal" color="primary" text @click="submit">Submit</v-btn>
+      <v-btn :disabled="!allLegal" color="primary" text @click="submit">שליחה</v-btn>
     </v-card-actions>
   </v-form>
 </template>
 
 <script>
-import { mailOut, nextId } from "../data/mails";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "NewMail",
   data() {
     return {
-      mailOut,
+      toMySelf: false,
       name: "",
       title: "",
       content: "",
-      nextId
+      massageRules: [() => !!this.content || "שדה חובה"],
+      titleRules: [() => !!this.title || "שדה חובה"],
+      nameRules: [
+        () => {
+          if (this.name && this.name.match(/[A-Za-zא-ת]+/)) return true;
+          return "חייב להכיל לפחות תו אחד";
+        }
+      ]
     };
   },
+  watch: {
+    toMySelf() {
+      if (this.toMySelf) {
+        this.name = "Me";
+      } else {
+        this.name = "";
+      }
+    }
+  },
   computed: {
-    allLigal() {
+    ...mapState(["nextMailId"]),
+    allLegal() {
       if (
         this.name === undefined ||
         this.title === undefined ||
@@ -70,28 +92,36 @@ export default {
       )
         return false;
 
-      if (!this.name.match(/[A-Za-z]+/)) return false;
+      if (!this.name.match(/[A-Za-zא-ת]+/)) return false;
       return true;
     }
   },
   methods: {
-    nameRules(str) {
-      if (str === undefined) return [];
-      if (str.match(/[A-Za-z]+/)) return [];
-      return ["Must have a letter"];
-    },
+    ...mapActions(["newMail", "newMailToMySelf"]),
     submit() {
-      this.mailOut.push({
-        id: this.nextId.id,
+      const mail = {
+        id: this.nextMailId,
         title: this.title,
         sent: new Date(),
         from: "Me",
         content: this.content,
-        favorite: false
-      });
-      this.nextId.id++;
-      alert("The mail has sent");
+        mailEvent: { favorite: false, replied: false }
+      };
+      if (this.toMySelf) {
+        this.newMailToMySelf(mail);
+      } else {
+        this.newMail(mail);
+      }
+      alert("ההודעה נשלחה");
       this.$refs.form.reset();
+    },
+    toMySelfClicked() {
+      this.name = "Me";
+      this.toMySelf = true;
+    },
+    cancleMySelfClicked() {
+      this.name = "";
+      this.toMySelf = false;
     }
   }
 };
@@ -99,10 +129,10 @@ export default {
 
 <style scoped>
 .mailCard {
-  margin: 10vh;
-  padding: 2vh;
+  padding: 5vh;
+  padding-top: 0vh;
 }
 .area {
-  padding-top: 3vh;
+  padding-top: 2vh;
 }
 </style>

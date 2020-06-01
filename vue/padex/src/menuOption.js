@@ -3,21 +3,24 @@ export default [{
         title: "הודעה חדשה",
         component: "NewMail",
         isExtraDetails: false,
-        icon: "mail"
+        icon: "mail",
+        haveFavoriteOption: false
     },
     {
         id: "2",
         title: "דואר נכנס",
-        component: "MsgIn",
+        component: "MailIn",
         isExtraDetails: true,
-        icon: "inbox"
+        icon: "inbox",
+        haveFavoriteOption: true
     },
     {
         id: "3",
         title: "דואר יוצא",
-        component: "MsgOut",
+        component: "MailOut",
         isExtraDetails: true,
-        icon: "send"
+        icon: "send",
+        haveFavoriteOption: true
     },
     {
         id: "4",
@@ -25,5 +28,6 @@ export default [{
         component: "Trash",
         isExtraDetails: false,
         icon: "delete",
+        haveFavoriteOption: true
     },
 ]
